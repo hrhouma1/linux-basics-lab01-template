@@ -1,0 +1,98 @@
+===============================================================================
+                    LAB LINUX BASICS - INSTRUCTIONS ETUDIANTS
+===============================================================================
+
+🐧 BIENVENUE DANS VOTRE ENVIRONNEMENT LINUX !
+
+Vous êtes maintenant dans un vrai système Ubuntu Linux qui fonctionne dans 
+votre navigateur. Aucune installation nécessaire !
+
+===============================================================================
+ETAPE 1 : LANCER LES EXERCICES
+===============================================================================
+
+Dans le terminal en bas, tapez une de ces commandes :
+
+    npm run exo1        # Exercice 1 : Informations système
+    npm run exo2        # Exercice 2 : Navigation
+    npm run exo3        # Exercice 3 : Création de fichiers
+    npm run all         # Tous les exercices d'un coup
+
+OU utilisez le menu VS Code :
+    Terminal → Run Task → Choisissez votre exercice
+
+===============================================================================
+ETAPE 2 : SUIVRE LES EXERCICES
+===============================================================================
+
+EXERCICE 1 - Informations système (5 minutes)
+• Découvrir qui vous êtes : whoami
+• Voir où vous êtes : pwd  
+• Connaître votre système : uname -a
+• Afficher la date : date
+
+EXERCICE 2 - Navigation (10 minutes)  
+• Explorer les dossiers : ls -la
+• Se déplacer : cd /
+• Revenir à la maison : cd ~
+• Voir l'arborescence : tree -L 2
+
+EXERCICE 3 - Création de fichiers (15 minutes)
+• Créer des dossiers : mkdir -p lab/exercices/linux
+• Créer un rapport : echo "Lab terminé !" > lab/rapport.txt
+• Vérifier le contenu : cat lab/rapport.txt
+
+===============================================================================
+ETAPE 3 : SAUVEGARDER VOTRE TRAVAIL
+===============================================================================
+
+Une fois les exercices terminés :
+
+    git add -A
+    git commit -m "Lab Linux terminé"
+    git push
+
+===============================================================================
+EVALUATION AUTOMATIQUE
+===============================================================================
+
+Votre travail sera noté automatiquement sur 100 points :
+
+• 40 points : Structure créée (dossier lab/)
+• 40 points : Fichier rapport.txt avec bon contenu  
+• 20 points : Bonus pour structure complète
+
+Notes : A (80-100), B (60-79), C (40-59), F (moins de 40)
+
+===============================================================================
+AIDE ET DEPANNAGE
+===============================================================================
+
+COMMANDES UTILES :
+    pwd                 # Où suis-je ?
+    ls -la             # Que contient ce dossier ?
+    cd ~               # Retour au dossier personnel
+    npm run help       # Voir toutes les commandes
+    npm run verify     # Vérifier mon travail
+
+PROBLEMES COURANTS :
+• Terminal fermé ? → Terminal → New Terminal
+• Commande introuvable ? → Vérifiez l'orthographe
+• Bloqué ? → Recommencez avec npm run exo3
+
+===============================================================================
+FELICITATIONS !
+===============================================================================
+
+Une fois terminé, vous maîtriserez :
+✓ Les commandes Linux de base
+✓ La navigation dans les dossiers  
+✓ La création de fichiers
+✓ L'utilisation du terminal
+
+Durée totale : 30-45 minutes
+Prochaine étape : Lab 02 - Manipulation avancée
+
+===============================================================================
+SUPPORT : Si vous avez des questions, consultez les instructions dans Thinkific
+===============================================================================

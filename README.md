@@ -1,15 +1,16 @@
-# 🐧 Linux Basics Lab - InskillFlow Academy
+LINUX BASICS LAB - INSKILLFLOW ACADEMY
+========================================
 
-## 🎯 Objectifs du Lab
+OBJECTIFS DU LAB
 Ce lab pratique vous permet de maîtriser les commandes Linux essentielles dans un environnement Codespaces sécurisé.
 
 ### Ce que vous allez apprendre :
-- ✅ **Commandes d'information système** : `whoami`, `pwd`, `uname`, `date`
-- ✅ **Navigation dans les dossiers** : `cd`, `ls`, exploration de l'arborescence
-- ✅ **Création et manipulation de fichiers** : `mkdir`, `touch`, `echo`
-- ✅ **Visualisation du contenu** : `cat`, `tree`, `ls -la`
+- **Commandes d'information système** : `whoami`, `pwd`, `uname`, `date`
+- **Navigation dans les dossiers** : `cd`, `ls`, exploration de l'arborescence
+- **Création et manipulation de fichiers** : `mkdir`, `touch`, `echo`
+- **Visualisation du contenu** : `cat`, `tree`, `ls -la`
 
-## 🚀 Démarrage rapide
+## DEMARRAGE RAPIDE
 
 ### 1. Ouvrir l'environnement
 1. Cliquez sur **Code** → **Codespaces** → **Create codespace on main**
@@ -35,9 +36,9 @@ npm run exo3
 npm run all
 ```
 
-## 📋 Exercices détaillés
+## EXERCICES DETAILLES
 
-### 🔍 Exercice 1 : Découverte du système
+### Exercice 1 : Découverte du système
 **Objectif** : Obtenir des informations sur votre environnement Linux
 
 **Commandes à exécuter** :
@@ -50,7 +51,7 @@ df -h           # Espace disque disponible
 free -h         # Mémoire disponible
 ```
 
-### 🧭 Exercice 2 : Navigation et exploration
+### Exercice 2 : Navigation et exploration
 **Objectif** : Explorer l'arborescence Linux
 
 **Commandes à exécuter** :
@@ -63,7 +64,7 @@ pwd             # Confirmer la position
 tree -L 2       # Arborescence sur 2 niveaux
 ```
 
-### 🛠️ Exercice 3 : Création et manipulation
+### Exercice 3 : Création et manipulation
 **Objectif** : Créer votre propre structure de fichiers
 
 **Commandes à exécuter** :
@@ -78,13 +79,13 @@ cat rapport.txt                 # Vérifier le contenu
 tree ../lab                     # Voir la structure créée
 ```
 
-## 📤 Remise du travail
+## REMISE DU TRAVAIL
 
 ### 1. Vérification automatique
 Le système vérifie automatiquement :
-- ✅ Présence du fichier `lab/rapport.txt`
-- ✅ Contenu correct dans le rapport
-- ✅ Structure de dossiers créée
+- Présence du fichier `lab/rapport.txt`
+- Contenu correct dans le rapport
+- Structure de dossiers créée
 
 ### 2. Sauvegarde de votre travail
 ```bash
@@ -99,7 +100,7 @@ Prenez une capture montrant :
 - Le contenu de `lab/rapport.txt` (avec `cat lab/rapport.txt`)
 - Votre nom d'utilisateur (avec `whoami`)
 
-## 🎯 Critères d'évaluation
+## CRITERES D'EVALUATION
 
 | Critère | Points | Description |
 |---------|--------|-------------|
@@ -108,7 +109,7 @@ Prenez une capture montrant :
 | **Exercice 3** | 30% | Fichiers et dossiers créés correctement |
 | **Capture d'écran** | 10% | Preuve visuelle du travail accompli |
 
-## 🆘 Aide et dépannage
+## AIDE ET DEPANNAGE
 
 ### Commandes utiles
 ```bash
@@ -127,7 +128,7 @@ rm -rf lab         # Supprimer le dossier lab
 - **Commande introuvable ?** → Vérifiez l'orthographe et les espaces
 - **Permission refusée ?** → Normal dans Codespaces, continuez avec les exercices
 
-## 🎉 Félicitations !
+## FELICITATIONS !
 Une fois tous les exercices terminés et votre travail poussé sur GitHub, vous maîtrisez les bases de Linux !
 
 **Prochaine étape** : Lab 02 - Manipulation avancée de fichiers et recherche
