@@ -1,0 +1,160 @@
+name: 🐧 Autograde Linux Lab - InskillFlow
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  autograde:
+    runs-on: ubuntu-latest
+    name: Évaluation automatique du Lab Linux
+    
+    steps:
+    - name: 📥 Checkout du code étudiant
+      uses: actions/checkout@v4
+      
+    - name: 🔍 Vérification de la structure du lab
+      run: |
+        echo "🔍 Vérification de la structure des fichiers..."
+        
+        # Vérifier que le dossier lab existe
+        if [ ! -d "lab" ]; then
+          echo "❌ ERREUR: Le dossier 'lab' n'existe pas"
+          echo "💡 Conseil: Exécutez l'exercice 3 pour créer la structure"
+          exit 1
+        else
+          echo "✅ Dossier 'lab' trouvé"
+        fi
+        
+        # Vérifier que le fichier rapport.txt existe
+        if [ ! -f "lab/rapport.txt" ]; then
+          echo "❌ ERREUR: Le fichier 'lab/rapport.txt' n'existe pas"
+          echo "💡 Conseil: Exécutez l'exercice 3 pour créer le rapport"
+          exit 1
+        else
+          echo "✅ Fichier 'lab/rapport.txt' trouvé"
+        fi
+        
+    - name: 📝 Vérification du contenu du rapport
+      run: |
+        echo "📝 Vérification du contenu du rapport..."
+        
+        # Vérifier le message de succès
+        if grep -q "Lab Linux terminé avec succès" lab/rapport.txt; then
+          echo "✅ Message de succès trouvé"
+        else
+          echo "❌ ERREUR: Message de succès manquant dans le rapport"
+          exit 1
+        fi
+        
+        # Vérifier la présence de l'utilisateur
+        if grep -q "Utilisateur:" lab/rapport.txt; then
+          echo "✅ Information utilisateur présente"
+        else
+          echo "❌ ERREUR: Information utilisateur manquante"
+          exit 1
+        fi
+        
+        # Vérifier la présence de la date
+        if grep -q "Date:" lab/rapport.txt; then
+          echo "✅ Information de date présente"
+        else
+          echo "❌ ERREUR: Information de date manquante"
+          exit 1
+        fi
+        
+    - name: 🗂️ Vérification de la structure des dossiers
+      run: |
+        echo "🗂️ Vérification de la structure des dossiers..."
+        
+        # Vérifier la hiérarchie lab/exercices/linux
+        if [ -d "lab/exercices/linux" ]; then
+          echo "✅ Structure complète lab/exercices/linux trouvée"
+        elif [ -d "lab/exercices" ]; then
+          echo "⚠️ Structure partielle lab/exercices trouvée"
+        else
+          echo "ℹ️ Structure minimale (dossier lab seulement)"
+        fi
+        
+    - name: 📊 Affichage du contenu du rapport
+      run: |
+        echo "📊 Contenu du rapport créé par l'étudiant:"
+        echo "=========================================="
+        cat lab/rapport.txt
+        echo "=========================================="
+        
+    - name: 🎯 Calcul de la note
+      run: |
+        echo "🎯 Calcul de la note du lab..."
+        
+        score=0
+        total=100
+        
+        # Vérification de la structure (40 points)
+        if [ -d "lab" ] && [ -f "lab/rapport.txt" ]; then
+          score=$((score + 40))
+          echo "✅ Structure de base: +40 points"
+        fi
+        
+        # Vérification du contenu (40 points)
+        if grep -q "Lab Linux terminé avec succès" lab/rapport.txt && \
+           grep -q "Utilisateur:" lab/rapport.txt && \
+           grep -q "Date:" lab/rapport.txt; then
+          score=$((score + 40))
+          echo "✅ Contenu du rapport: +40 points"
+        fi
+        
+        # Bonus pour structure complète (20 points)
+        if [ -d "lab/exercices/linux" ]; then
+          score=$((score + 20))
+          echo "✅ Structure complète: +20 points (bonus)"
+        elif [ -d "lab/exercices" ]; then
+          score=$((score + 10))
+          echo "✅ Structure partielle: +10 points"
+        fi
+        
+        echo "📊 Score final: $score/$total points"
+        
+        # Déterminer le statut
+        if [ $score -ge 80 ]; then
+          echo "🎉 EXCELLENT! Lab réussi avec brio!"
+          echo "grade=A" >> $GITHUB_ENV
+        elif [ $score -ge 60 ]; then
+          echo "👍 BIEN! Lab réussi!"
+          echo "grade=B" >> $GITHUB_ENV
+        elif [ $score -ge 40 ]; then
+          echo "⚠️ PASSABLE. Quelques éléments manquants."
+          echo "grade=C" >> $GITHUB_ENV
+        else
+          echo "❌ INSUFFISANT. Veuillez refaire les exercices."
+          echo "grade=F" >> $GITHUB_ENV
+          exit 1
+        fi
+        
+        echo "score=$score" >> $GITHUB_ENV
+        
+    - name: 📋 Résumé de l'évaluation
+      run: |
+        echo "# 📋 Résumé de l'évaluation - Lab Linux Basics" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**Score obtenu:** ${{ env.score }}/100 points" >> $GITHUB_STEP_SUMMARY
+        echo "**Note:** ${{ env.grade }}" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "## ✅ Éléments validés" >> $GITHUB_STEP_SUMMARY
+        echo "- Structure du lab créée" >> $GITHUB_STEP_SUMMARY
+        echo "- Fichier rapport.txt présent" >> $GITHUB_STEP_SUMMARY
+        echo "- Contenu du rapport correct" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "## 📁 Structure détectée" >> $GITHUB_STEP_SUMMARY
+        echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+        find lab -type f -o -type d | sort >> $GITHUB_STEP_SUMMARY
+        echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "## 📝 Contenu du rapport" >> $GITHUB_STEP_SUMMARY
+        echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+        cat lab/rapport.txt >> $GITHUB_STEP_SUMMARY
+        echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "🎉 **Lab Linux Basics terminé avec succès!**" >> $GITHUB_STEP_SUMMARY

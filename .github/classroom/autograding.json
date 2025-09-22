@@ -1,0 +1,44 @@
+{
+  "tests": [
+    {
+      "name": "Vérification structure lab",
+      "setup": "",
+      "run": "test -d lab",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 20
+    },
+    {
+      "name": "Vérification fichier rapport.txt",
+      "setup": "",
+      "run": "test -f lab/rapport.txt",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 30
+    },
+    {
+      "name": "Vérification contenu rapport",
+      "setup": "",
+      "run": "grep -q 'Lab Linux terminé avec succès' lab/rapport.txt",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 30
+    },
+    {
+      "name": "Vérification informations utilisateur",
+      "setup": "",
+      "run": "grep -q 'Utilisateur:' lab/rapport.txt && grep -q 'Date:' lab/rapport.txt",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 20
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "name": "linux-basics-lab-inskillflow",
+  "version": "1.0.0",
+  "description": "Lab pratique Linux pour InskillFlow Academy",
+  "main": "index.js",
+  "scripts": {
+    "exo1": "echo '🔍 Exercice 1 : Informations système' && echo '=================================' && whoami && echo 'Utilisateur:' $(whoami) && echo 'Répertoire:' $(pwd) && echo 'Système:' && uname -a && echo 'Date:' $(date) && echo 'Espace disque:' && df -h | head -2 && echo 'Mémoire:' && free -h && echo '✅ Exercice 1 terminé!'",
+    
+    "exo2": "echo '🧭 Exercice 2 : Navigation et exploration' && echo '=========================================' && echo 'Contenu du répertoire courant:' && ls -la && echo && echo 'Exploration de la racine:' && ls / && echo && echo 'Retour au home:' && cd ~ && pwd && echo && echo 'Arborescence (2 niveaux):' && tree -L 2 2>/dev/null || echo 'Structure créée dans les exercices suivants' && echo '✅ Exercice 2 terminé!'",
+    
+    "exo3": "echo '🛠️ Exercice 3 : Création et manipulation' && echo '=========================================' && echo 'Création de la structure...' && mkdir -p lab/exercices/linux && cd lab && echo 'Création du rapport...' && echo 'Lab Linux terminé avec succès !' > rapport.txt && echo 'Utilisateur: '$(whoami) >> rapport.txt && echo 'Date: '$(date) >> rapport.txt && echo 'Répertoire: '$(pwd) >> rapport.txt && echo && echo 'Contenu du rapport créé:' && cat rapport.txt && echo && echo 'Structure créée:' && tree ../lab 2>/dev/null || ls -la && echo '✅ Exercice 3 terminé! Fichier rapport.txt créé.'",
+    
+    "all": "npm run exo1 && echo && npm run exo2 && echo && npm run exo3 && echo && echo '🎉 Tous les exercices terminés! Vous pouvez maintenant faire git add -A && git commit -m \"Lab terminé\" && git push'",
+    
+    "verify": "echo '🔍 Vérification du lab...' && test -f lab/rapport.txt && echo '✅ Fichier rapport.txt trouvé' && grep -q 'Lab Linux terminé avec succès' lab/rapport.txt && echo '✅ Contenu correct dans le rapport' && echo '🎉 Lab validé avec succès!'",
+    
+    "help": "echo '📋 Commandes disponibles:' && echo '• npm run exo1    - Exercice 1 : Informations système' && echo '• npm run exo2    - Exercice 2 : Navigation' && echo '• npm run exo3    - Exercice 3 : Création de fichiers' && echo '• npm run all     - Tous les exercices' && echo '• npm run verify  - Vérifier le lab' && echo '• npm run help    - Cette aide'"
+  },
+  "keywords": [
+    "linux",
+    "bash",
+    "terminal",
+    "education",
+    "inskillflow"
+  ],
+  "author": "InskillFlow Academy",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {}
+}
